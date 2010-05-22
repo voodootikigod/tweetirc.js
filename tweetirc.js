@@ -30,7 +30,7 @@ var twit = new TwitterNode({
 
 twit
   .addListener('tweet', function(tweet) {
-		bot.privmsg(room, "@" + tweet.user.screen_name + ": " + tweet.text)
+		bot.privmsg(config.irc.room, "@" + tweet.user.screen_name + ": " + tweet.text)
   }).addListener('limit', function(limit) {
     sys.puts("LIMIT: " + sys.inspect(limit));
   }).addListener('delete', function(del) {
