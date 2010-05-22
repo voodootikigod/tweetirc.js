@@ -26,17 +26,10 @@ var twit = new TwitterNode({  user: config.twitter.account
                           });
 
 function html_decode(txt) {
-  return txt.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
+  return txt.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&");
 }
 
 
-twit
-  .addListener('tweet', function(tweet) {
-    bot.privmsg(config.irc.room, "@" + tweet.user.screen_name + ": " + html_decode(tweet.text))
-  }).addListener('limit', function(limit) {
-    sys.puts("LIMIT: " + sys.inspect(limit));
-  }).addListener('delete', function(del) {
-    sys.puts("DELETE: " + sys.inspect(del));
-  }).addListener('end', function(resp) {
-    sys.puts("wave goodbye... " + resp.statusCode);
+twit.addListener('tweet', function(tweet) {
+    bot.privmsg(config.irc.room, ["@",tweet.user.screen_name, ": ", html_decode(tweet.text)].join(""))
   }).stream();
