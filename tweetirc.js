@@ -1,5 +1,5 @@
-var TwitterNode = require('./twitter-node/lib').TwitterNode;
-var IRC        = require("./IRC/lib/irc");
+var TwitterNode = require('./lib/twitter-node/lib').TwitterNode;
+var IRC        = require("./lib/IRC/lib/irc");
 var config      = require("./config").load()
 var sys         = require('sys');
 
