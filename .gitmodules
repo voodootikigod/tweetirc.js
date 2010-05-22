@@ -1,6 +1,6 @@
-[submodule "IRC"]
-	path = IRC
+[submodule "lib/IRC"]
+	path = lib/IRC
 	url = git://github.com/gf3/IRC-js.git
-[submodule "twitter-node"]
-	path = twitter-node
+[submodule "lib/twitter-node"]
+	path = lib/twitter-node
 	url = git://github.com/technoweenie/twitter-node.git
