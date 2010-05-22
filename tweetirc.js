@@ -25,10 +25,14 @@ var twit = new TwitterNode({  user: config.twitter.account
                               , track: config.twitter.terms 
                           });
 
+function html_decode(txt) {
+  return txt.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
+}
+
 
 twit
   .addListener('tweet', function(tweet) {
-    bot.privmsg(config.irc.room, "@" + tweet.user.screen_name + ": " + tweet.text)
+    bot.privmsg(config.irc.room, "@" + tweet.user.screen_name + ": " + html_decode(tweet.text))
   }).addListener('limit', function(limit) {
     sys.puts("LIMIT: " + sys.inspect(limit));
   }).addListener('delete', function(del) {
